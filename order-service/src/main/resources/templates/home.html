@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Canteen Connect</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- External CSS Files -->
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-brand">
+                🍅 Canteen Connect
+            </a>
+            
+            <ul class="navbar-menu">
+                <li class="navbar-item">
+                    <a href="/home" class="navbar-link active">
+                        🏠 Menu
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" onclick="goToWallet()" class="navbar-link">
+                        💰 Wallet
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" onclick="goToHistory()" class="navbar-link">
+                        📜 Orders
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" onclick="logout()" class="navbar-link" style="color: var(--error);">
+                        🚪 Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h1 class="hero-title">Craving Something Delicious? 🔥</h1>
+            <p class="hero-subtitle">Order from your favorite canteen, delivered right to your desk</p>
+        </div>
+    </section>
+
+    <!-- Search Bar -->
+    <section class="search-section">
+        <div class="search-container">
+            <input type="text" 
+                   id="searchInput"
+                   class="search-input input-search" 
+                   placeholder="Search for food items, categories...">
+            <button class="search-btn">Search</button>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- User Greeting -->
+        <div style="text-align: center; margin-bottom: var(--spacing-xl);">
+            <div style="display: inline-block; background: var(--white); padding: 16px 32px; border-radius: var(--radius-full); box-shadow: var(--shadow-lg);">
+                <span style="font-weight: 600; color: var(--gray-700);">
+                    👋 Welcome back, <span id="userName" style="color: var(--primary); font-weight: 700;">Student</span>!
+                </span>
+                <span style="color: var(--gray-500); margin-left: 8px;">
+                    Roll No: <span id="userRoll" style="font-weight: 600; color: var(--gray-700);">...</span>
+                </span>
+            </div>
+        </div>
+
+        <!-- Success/Error Message from Server -->
+        <div th:if="${message}" 
+             th:class="${status == 'success' ? 'alert alert-success' : 'alert alert-error'}"
+             style="margin-bottom: var(--spacing-xl); padding: var(--spacing-md); border-radius: var(--radius-lg); text-align: center; font-weight: 600;">
+            <span th:text="${message}"></span>
+        </div>
+
+        <!-- Category Carousel -->
+        <div class="category-carousel">
+            <h2 class="category-title">Shop by Category</h2>
+            <div class="category-scroll">
+                <div class="category-card" onclick="filterByCategory('All')">
+                    <div class="category-icon">🍽️</div>
+                    <p class="category-name">All Items</p>
+                </div>
+                <div class="category-card" onclick="filterByCategory('Snacks')">
+                    <div class="category-icon">🍔</div>
+                    <p class="category-name">Snacks</p>
+                </div>
+                <div class="category-card" onclick="filterByCategory('Drinks')">
+                    <div class="category-icon">🥤</div>
+                    <p class="category-name">Drinks</p>
+                </div>
+                <div class="category-card" onclick="filterByCategory('Meals')">
+                    <div class="category-icon">🍛</div>
+                    <p class="category-name">Meals</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="filter-tabs">
+                <button class="filter-tab active" onclick="filterByCategory('All')">
+                    All Items
+                </button>
+                <button class="filter-tab" onclick="filterByCategory('Snacks')">
+                    🍔 Snacks
+                </button>
+                <button class="filter-tab" onclick="filterByCategory('Drinks')">
+                    🥤 Drinks
+                </button>
+                <button class="filter-tab" onclick="filterByCategory('Meals')">
+                    🍛 Meals
+                </button>
+            </div>
+            
+            <select id="sortDropdown" class="sort-dropdown">
+                <option value="default">Sort By: Default</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="name">Name: A to Z</option>
+            </select>
+        </div>
+
+        <!-- Food Grid -->
+        <div class="food-grid" id="foodGrid">
+            <!-- Food cards will be dynamically loaded by JavaScript -->
+        </div>
+    </div>
+
+    <!-- External JavaScript Files -->
+    <script src="/js/common.js"></script>
+    <script src="/js/home.js"></script>
+</body>
+</html>

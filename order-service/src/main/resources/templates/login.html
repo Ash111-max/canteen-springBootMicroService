@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Canteen Connect</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <!-- Logo Section -->
+            <div class="auth-logo">
+                <div class="logo-icon">🍅</div>
+                <h1 class="auth-title">Canteen Connect</h1>
+                <p class="auth-subtitle">Student Login</p>
+            </div>
+
+            <!-- Alert Messages -->
+            <div id="alertMessage"></div>
+
+            <!-- Login Form -->
+            <form class="auth-form" onsubmit="event.preventDefault(); login();">
+                <div class="form-group">
+                    <label class="form-label">Roll Number</label>
+                    <input 
+                        type="text" 
+                        id="rollNumber" 
+                        class="form-input" 
+                        placeholder="Enter your roll number"
+                        autocomplete="username">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        class="form-input" 
+                        placeholder="Enter your password"
+                        autocomplete="current-password">
+                </div>
+
+                <button type="submit" id="loginBtn" class="auth-button">
+                    Login
+                </button>
+
+                <a href="/forgot-password" class="forgot-link">
+                    🔒 Forgot Password?
+                </a>
+            </form>
+
+            <!-- Divider -->
+            <div class="auth-divider">
+                <span>OR</span>
+            </div>
+
+            <!-- Signup Link -->
+            <a href="/signup" class="auth-link">
+                New User? <strong>Create Account</strong>
+            </a>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="/js/common.js"></script>
+    <script src="/js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wallet - Canteen Connect</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/wallet.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-brand">
+                🍅 Canteen Connect
+            </a>
+            
+            <ul class="navbar-menu">
+                <li class="navbar-item">
+                    <a href="#" onclick="goToHome()" class="navbar-link">
+                        🏠 Menu
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="/wallet" class="navbar-link active">
+                        💰 Wallet
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" onclick="goToHistory()" class="navbar-link">
+                        📜 Orders
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" onclick="logout()" class="navbar-link" style="color: var(--error);">
+                        🚪 Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Wallet Hero -->
+    <section class="wallet-hero">
+        <div class="container text-center" style="color: white;">
+            <h1 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 8px;">My Wallet</h1>
+            <p style="font-size: 1.1rem; opacity: 0.9;">Manage your balance and view transactions</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Wallet Card -->
+        <div class="wallet-card-container">
+            <div class="wallet-card">
+                <div class="wallet-header">
+                    <span class="wallet-type">Student Wallet</span>
+                    <div class="wallet-chip"></div>
+                </div>
+                
+                <div class="balance-section">
+                    <div class="balance-label">Available Balance</div>
+                    <div class="balance-amount" id="walletBalance">₹0.00</div>
+                </div>
+                
+                <div class="student-info">
+                    <div>
+                        <div class="student-name" id="studentName">Loading...</div>
+                        <div class="student-roll" id="studentRoll">Roll No: ...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <div class="action-card" onclick="goToHome()">
+                <div class="action-icon">🛒</div>
+                <div class="action-label">Order Food</div>
+                <div class="action-value">Browse menu</div>
+            </div>
+            
+            <div class="action-card" onclick="goToHistory()">
+                <div class="action-icon">📊</div>
+                <div class="action-label">Total Orders</div>
+                <div class="action-value" id="totalOrders">0</div>
+            </div>
+            
+            <div class="action-card">
+                <div class="action-icon">💸</div>
+                <div class="action-label">Total Spent</div>
+                <div class="action-value" id="totalSpent">₹0</div>
+            </div>
+        </div>
+
+        <!-- Transaction Section -->
+        <div class="transaction-section">
+            <div class="section-header">
+                <h2 class="section-title">💳 Transaction History</h2>
+                <div class="section-actions">
+                    <button class="btn btn-sm btn-outline" onclick="refreshWallet()">
+                        🔄 Refresh
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="transaction-filters">
+                <button class="filter-chip active" onclick="filterTransactions('all')">
+                    All Transactions
+                </button>
+                <button class="filter-chip" onclick="filterTransactions('debit')">
+                    💸 Expenses
+                </button>
+                <button class="filter-chip" onclick="filterTransactions('credit')">
+                    💰 Credits
+                </button>
+            </div>
+
+            <!-- Transaction List -->
+            <div class="transaction-list" id="transactionList">
+                <!-- Transactions will be loaded by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Info Banner -->
+        <div class="info-banner">
+            <div class="info-banner-icon">ℹ️</div>
+            <div class="info-banner-text">
+                Visit the Canteen Counter or Admin Panel to top-up your wallet balance.
+            </div>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="/js/common.js"></script>
+    <script src="/js/wallet.js"></script>
+</body>
+</html>

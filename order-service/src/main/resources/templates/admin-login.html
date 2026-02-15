@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login - Canteen Connect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Animated Background */
+        body::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.02) 10px,
+                rgba(255,255,255,0.02) 20px
+            );
+            animation: slide 20s linear infinite;
+        }
+        
+        @keyframes slide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .card { 
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 50px 40px; 
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .shield-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        h2 { 
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.8em;
+            font-weight: 800;
+        }
+        
+        .subtitle {
+            color: #636e72;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+        }
+        
+        .warning-banner {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 230, 109, 0.1));
+            border-left: 4px solid #e74c3c;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            text-align: left;
+            font-size: 0.85em;
+            color: #c0392b;
+            font-weight: 600;
+        }
+        
+        .input-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2d3436;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+        
+        input { 
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e1e8ed;
+            border-radius: 12px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #e74c3c;
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+        }
+        
+        button { 
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.3);
+        }
+        
+        button:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(231, 76, 60, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .link { 
+            display: block; 
+            margin-top: 25px;
+            color: #636e72;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+        }
+        
+        .link:hover {
+            color: #2c3e50;
+        }
+        
+        .security-features {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e8ed;
+        }
+        
+        .security-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            font-size: 0.85em;
+            color: #636e72;
+        }
+        
+        .security-item::before {
+            content: "🔒";
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="shield-icon">🛡️</div>
+        <h2>Admin Access</h2>
+        <p class="subtitle">Restricted Area - Authorized Personnel Only</p>
+        
+        <div class="warning-banner">
+            ⚠️ All login attempts are logged and monitored
+        </div>
+        
+        <div class="input-group">
+            <label>Admin Password</label>
+            <input type="password" 
+                   id="adminPass" 
+                   placeholder="Enter admin password"
+                   autocomplete="current-password">
+        </div>
+        
+        <button onclick="adminLogin()">🔓 Unlock Admin Panel</button>
+        
+        <a href="/" class="link">← Back to Home</a>
+        
+        <div class="security-features">
+            <div class="security-item">Encrypted Connection</div>
+            <div class="security-item">Session-Based Authentication</div>
+        </div>
+    </div>
+
+    <script>
+        function adminLogin() {
+            let pass = document.getElementById("adminPass").value;
+
+            if (!pass) {
+                alert("⚠️ Please enter the admin password!");
+                return;
+            }
+
+            // Hardcoded check for the project (In production, use backend auth)
+            if (pass === "admin123") {
+                localStorage.setItem("adminUser", "true");
+                
+                // Show success animation
+                document.querySelector("button").innerHTML = "✅ Access Granted!";
+                document.querySelector("button").style.background = "linear-gradient(135deg, #11998e, #38ef7d)";
+                
+                setTimeout(() => {
+                    window.location.href = "/admin";
+                }, 800);
+            } else {
+                // Show error
+                let input = document.getElementById("adminPass");
+                input.style.borderColor = "#e74c3c";
+                input.style.animation = "shake 0.5s";
+                
+                alert("❌ Access Denied! Invalid password.");
+                
+                // Reset animation
+                setTimeout(() => {
+                    input.style.animation = "";
+                    input.style.borderColor = "#e1e8ed";
+                }, 500);
+            }
+        }
+        
+        // Allow Enter key to submit
+        document.getElementById("adminPass").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                adminLogin();
+            }
+        });
+        
+        // Add shake animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-10px); }
+                75% { transform: translateX(10px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

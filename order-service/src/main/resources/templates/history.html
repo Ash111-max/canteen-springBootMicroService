@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History - Canteen Connect</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/history.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="navbar-brand">
+                🍅 Canteen Connect
+            </a>
+            
+            <ul class="navbar-menu">
+                <li class="navbar-item">
+                    <a href="#" onclick="goToHome()" class="navbar-link">
+                        🏠 Menu
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" onclick="goToWallet()" class="navbar-link">
+                        💰 Wallet
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="/history" class="navbar-link active">
+                        📜 Orders
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" onclick="logout()" class="navbar-link" style="color: var(--error);">
+                        🚪 Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="history-hero">
+        <div class="container">
+            <h1 class="history-title">📜 Order History</h1>
+            <p class="history-subtitle">Track all your delicious purchases</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Statistics Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">🛒</div>
+                <div class="stat-value" id="totalOrders">0</div>
+                <div class="stat-label">Total Orders</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div class="stat-value" id="totalSpent">₹0</div>
+                <div class="stat-label">Total Spent</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-value" id="confirmedOrders">0</div>
+                <div class="stat-label">Confirmed</div>
+            </div>
+        </div>
+
+        <!-- Orders Section -->
+        <div class="orders-section">
+            <div class="section-header">
+                <h2 class="section-title">Your Orders</h2>
+                <button class="btn btn-sm btn-outline" onclick="loadOrders()">
+                    🔄 Refresh
+                </button>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="history-filters">
+                <button class="filter-btn active" onclick="filterOrders('all')">
+                    All Orders
+                </button>
+                <button class="filter-btn" onclick="filterOrders('today')">
+                    Today
+                </button>
+                <button class="filter-btn" onclick="filterOrders('week')">
+                    This Week
+                </button>
+                <button class="filter-btn" onclick="filterOrders('month')">
+                    This Month
+                </button>
+            </div>
+
+            <!-- Orders Container -->
+            <div id="ordersContainer">
+                <!-- Orders will be loaded by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="/js/common.js"></script>
+    <script src="/js/history.js"></script>
+</body>
+</html>

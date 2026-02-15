@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Canteen Connect</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <!-- Admin Header -->
+    <div class="admin-header">
+        <div class="admin-title-section">
+            <h1 class="admin-page-title">👨‍💼 Admin Dashboard</h1>
+            <span class="admin-badge">ADMIN</span>
+        </div>
+        <button class="admin-logout-btn" onclick="adminLogout()">
+            🔒 Logout
+        </button>
+    </div>
+
+    <div class="admin-container">
+        <!-- Left: Form Section -->
+        <div class="admin-form-section">
+            <div class="form-section-header">
+                <h2 class="form-section-title" id="formTitle">➕ Add Menu Item</h2>
+            </div>
+            
+            <input type="hidden" id="itemId">
+            
+            <div class="form-group">
+                <label class="form-label">Item Name</label>
+                <input type="text" id="itemName" class="form-input" placeholder="e.g. Veg Burger">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Category</label>
+                <select id="category" class="form-input">
+                    <option value="Snacks">🍔 Snacks</option>
+                    <option value="Drinks">🥤 Drinks</option>
+                    <option value="Meals">🍛 Meals</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Type</label>
+                <select id="type" class="form-input">
+                    <option value="Veg">🟢 Veg</option>
+                    <option value="Non-Veg">🔴 Non-Veg</option>
+                </select>
+            </div>
+
+            <div class="input-row">
+                <div class="form-group">
+                    <label class="form-label">Price (₹)</label>
+                    <input type="number" id="price" class="form-input" placeholder="50" min="0">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Stock Quantity</label>
+                    <input type="number" id="quantity" class="form-input" placeholder="50" min="0">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Image URL</label>
+                <input type="text" id="imageUrl" class="form-input" placeholder="https://...">
+            </div>
+
+            <button class="btn btn-primary" onclick="saveItem()">💾 Save Item</button>
+            <button class="btn btn-secondary" onclick="resetForm()" style="margin-top: 8px;">
+                ↩️ Cancel
+            </button>
+            
+            <!-- Quick Actions -->
+            <div class="quick-actions-section">
+                <h3 class="quick-actions-title">⚡ Quick Actions</h3>
+                
+                <div class="form-group">
+                    <label class="form-label">Student Roll Number</label>
+                    <input type="text" id="rechargeRoll" class="form-input" placeholder="e.g. 101">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Recharge Amount (₹)</label>
+                    <input type="number" id="rechargeAmount" class="form-input" placeholder="500" min="0">
+                </div>
+                
+                <button class="btn btn-success" onclick="rechargeWallet()">
+                    💰 Recharge Wallet
+                </button>
+            </div>
+        </div>
+
+        <!-- Right: Menu Grid -->
+        <div class="admin-menu-section">
+            <div class="form-section-header">
+                <h2 class="form-section-title">📋 Current Menu</h2>
+            </div>
+            
+            <div class="admin-menu-grid" id="menuGrid">
+                <!-- Menu items will be loaded by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="/js/common.js"></script>
+    <script src="/js/admin.js"></script>
+</body>
+</html>
